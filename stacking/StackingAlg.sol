@@ -68,6 +68,4 @@ contract StackingAlg {
         rewardsToken.transfer(msg.sender, reward);
     }
 
-
-
 }

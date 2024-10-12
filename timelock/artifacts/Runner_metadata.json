@@ -1,0 +1,165 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_lock",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "fallback"
+			},
+			{
+				"inputs": [],
+				"name": "lock",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "message",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "newTimestamp",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "payments",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_msg",
+						"type": "string"
+					}
+				],
+				"name": "prepareData",
+				"outputs": [
+					{
+						"internalType": "bytes",
+						"name": "",
+						"type": "bytes"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "newMsg",
+						"type": "string"
+					}
+				],
+				"name": "run",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"constructor": {
+					"notice": "задаем ссылку на развенутый таймлок"
+				},
+				"newTimestamp()": {
+					"notice": "служебная для получения отложенного времени транзакции"
+				},
+				"prepareData(string)": {
+					"notice": "encode строки в байты для прокидывания из таймлока в run()"
+				},
+				"run(string)": {
+					"notice": "эту функцию будет запускать из под контракта таймлоказадает переданный из таймлока message "
+				}
+			},
+			"notice": "контракт для теста таймлока",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"timelock/Timelock.sol": "Runner"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"timelock/Timelock.sol": {
+			"keccak256": "0x4278185a442705677aec0dfcaa966178cdcfe841a36610750ee2c039cc7d8521",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9899f7cd49cf968979e3ec1503ff6eb44c3dc129032cfd523c9a3f25537d9610",
+				"dweb:/ipfs/Qmf9SeTAYuL4hBWw1GnQ4493zB4AJ54DzUhCigwH2GSoBU"
+			]
+		}
+	},
+	"version": 1
+}
