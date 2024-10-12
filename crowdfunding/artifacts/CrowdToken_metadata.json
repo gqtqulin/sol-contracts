@@ -6,7 +6,13 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [],
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_initialSupply",
+						"type": "uint256"
+					}
+				],
 				"stateMutability": "nonpayable",
 				"type": "constructor"
 			},
@@ -437,11 +443,11 @@
 	},
 	"sources": {
 		"crowdfunding/CrowdToken.sol": {
-			"keccak256": "0x8668bec3aea0899462ba913f8d98443986aa8c9ed11143e6064aa61cfdb47be8",
+			"keccak256": "0x25842df4dedda7e07f73e3bc9cc5f77453df928f6524e13b6faefbea053521ca",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://9be7dc8273b0561cfa59da5037c5d462d02022ddf1fd861cca775d58222965d2",
-				"dweb:/ipfs/QmSCwZSfhdKSQkucwVTazCrMSoWMn6rUuSvbhf4ZNKZgUw"
+				"bzz-raw://e9f23fd167f16fbbcbe746cbcb21922e487fc01385878cfd3102f7982049eed5",
+				"dweb:/ipfs/QmV5fAE7ujB7ABZgQA4GTc1PgaRyUyuy3Q3WDtrtr7Q7M8"
 			]
 		},
 		"node_modules/@openzeppelin/contracts/interfaces/draft-IERC6093.sol": {

@@ -116,7 +116,7 @@
 					{
 						"indexed": false,
 						"internalType": "address",
-						"name": "pledget",
+						"name": "pledger",
 						"type": "address"
 					},
 					{
@@ -369,16 +369,65 @@
 		],
 		"devdoc": {
 			"kind": "dev",
-			"methods": {},
+			"methods": {
+				"cancel(uint256)": {
+					"params": {
+						"_id": "id компании"
+					}
+				},
+				"claim(uint256)": {
+					"params": {
+						"_id": "id компании"
+					}
+				},
+				"launch(uint256,uint256,uint256)": {
+					"params": {
+						"_endAt": "когда заканчивается",
+						"_goal": "цель сумма",
+						"_startAt": "когда начинается"
+					}
+				},
+				"pledge(uint256,uint256)": {
+					"params": {
+						"_amount": "сумма",
+						"_id": "id компании"
+					}
+				},
+				"unpledge(uint256,uint256)": {
+					"params": {
+						"_amount": "сумма",
+						"_id": "id компании"
+					}
+				}
+			},
 			"version": 1
 		},
 		"userdoc": {
 			"kind": "user",
 			"methods": {
+				"cancel(uint256)": {
+					"notice": "отмена компании по id"
+				},
+				"claim(uint256)": {
+					"notice": "вывести при удале компании средства только для владельца компании"
+				},
 				"getTestTime()": {
-					"notice": "для ручного теста развернуть ERC20???"
+					"notice": "для теста"
+				},
+				"launch(uint256,uint256,uint256)": {
+					"notice": "запуск компании"
+				},
+				"pledge(uint256,uint256)": {
+					"notice": "пожертвовать компании по id для использования функции нужно сделать allowance на адрес этого контракта"
+				},
+				"refund(uint256)": {
+					"notice": "вывести средства жертвователем при неудачном окончании компании"
+				},
+				"unpledge(uint256,uint256)": {
+					"notice": "вывести свои пожертвования (можно часть) по окончании компании (неудаче)"
 				}
 			},
+			"notice": "краудфандинг на erc20, хранит компании с пожертвованиями возможность закинуть в компанию, вывести забрать деньги при успехе комании и вернуть средства при неудаче",
 			"version": 1
 		}
 	},
@@ -399,11 +448,11 @@
 	},
 	"sources": {
 		"crowdfunding/Crowdfunding.sol": {
-			"keccak256": "0x1cac57cfb2e09b30d1872425e7b365c1d108521db2d8185ac8dee10adf687168",
+			"keccak256": "0x4752fe01b7d27c86c67106ec441da3ea11f1160ace1acab3e8fd3a1964865b56",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://bdafda655b73d4503ecb24763d60bd36247529e81cf563f2e17c598a718addf4",
-				"dweb:/ipfs/QmQCrQib1HiuTUUpypBCYWHApEYhAfM4KGD8oHN67wDFQk"
+				"bzz-raw://1821f6dad0c83a295d4221ae697ab227a2da562e64f2b91377e88fdb2d5cae1c",
+				"dweb:/ipfs/QmPThfLgoaEMTFaJSyc5FoS43gsggxqrU3TQhnVcwowYjH"
 			]
 		},
 		"node_modules/@openzeppelin/contracts/interfaces/IERC20.sol": {
