@@ -264,8 +264,39 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_id",
+						"type": "uint256"
+					}
+				],
+				"name": "endCompany",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [],
-				"name": "getTestTime",
+				"name": "getLongTestTime",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getShortTestTime",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -380,6 +411,12 @@
 						"_id": "id компании"
 					}
 				},
+				"endCompany(uint256)": {
+					"details": "чтобы завершить компанию для ручного теста"
+				},
+				"getLongTestTime()": {
+					"details": "начальное время должно быть больше либо равно текущему (когда запускается launch) время окончания должно быть в диапазоне от начального времени + мин длительность и до до начального времени + макс длительность"
+				},
 				"launch(uint256,uint256,uint256)": {
 					"params": {
 						"_endAt": "когда заканчивается",
@@ -410,9 +447,6 @@
 				},
 				"claim(uint256)": {
 					"notice": "вывести при удале компании средства только для владельца компании"
-				},
-				"getTestTime()": {
-					"notice": "для теста"
 				},
 				"launch(uint256,uint256,uint256)": {
 					"notice": "запуск компании"
@@ -448,11 +482,11 @@
 	},
 	"sources": {
 		"crowdfunding/Crowdfunding.sol": {
-			"keccak256": "0x4752fe01b7d27c86c67106ec441da3ea11f1160ace1acab3e8fd3a1964865b56",
+			"keccak256": "0x0c09c0200b25e5f1353e7ee444670e178f1fb804514415ab73a49a5f0e9b3820",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://1821f6dad0c83a295d4221ae697ab227a2da562e64f2b91377e88fdb2d5cae1c",
-				"dweb:/ipfs/QmPThfLgoaEMTFaJSyc5FoS43gsggxqrU3TQhnVcwowYjH"
+				"bzz-raw://13042ea3dc52aeb421c2b0656e7cc6e5edbc97119630588e1ac45eabf1a2ecbf",
+				"dweb:/ipfs/QmU1qieRSsa8VJqgSUFyHNm1V5a36ZQjvTug1inr15y1Qu"
 			]
 		},
 		"node_modules/@openzeppelin/contracts/interfaces/IERC20.sol": {

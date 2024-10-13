@@ -129,7 +129,7 @@ contract Crowdfunding {
      */
     function claim(uint _id) external {
         Company storage company = companies[_id];
-        require(msg.sender == company.owner, "not an owner");
+        require(msg.sender == company.owner, "not an company owner");
         require(block.timestamp > company.endAt, "not ended");
         require(company.pledged >= company.goal, "pledged is too low");
         require(!company.claimed, "already claimed");
@@ -157,10 +157,25 @@ contract Crowdfunding {
     }
 
     /**
-        для теста
+        @dev начальное время должно быть больше либо равно текущему (когда запускается launch)
+        время окончания должно быть в диапазоне от начального времени + мин длительность и
+        до до начального времени + макс длительность
      */
-    function getTestTime() public view returns (uint256, uint256) {
+    function getLongTestTime() public view returns (uint256, uint256) {
         uint256 current = block.timestamp;
-        return (current + 20, current + 60);
+        return (current + 20, current + 90 days);
+    }
+
+    function getShortTestTime() public view returns (uint256, uint256) {
+        uint256 current = block.timestamp;
+        return (current + 20, current + 40);
+    }
+
+    /**
+        @dev чтобы завершить компанию для ручного теста
+     */
+    function endCompany(uint256 _id) public {
+        Company storage company = companies[_id];
+        company.endAt = block.timestamp - 5;
     }
 }
