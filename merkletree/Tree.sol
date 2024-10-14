@@ -88,7 +88,8 @@ contract Tree {
         bytes32 hash = leaf;
         // для каждого элемента дерева
         for (uint i = 0; i < proof.length; i++) {
-            bytes32 proofElement = proof[i];
+            bytes32 proofElement = proof[i]; // получаем текущий
+            // если число четное - второе число для ветки берем справа
             if (index % 2 == 0) {
                 hash = keccak256(abi.encodePacked(
                     hash, proofElement
