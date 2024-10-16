@@ -45,6 +45,8 @@ contract MultiSig is Ownable {
     event Deposit(address _from, uint256 _amount);
     event Submit(uint256 _txId);
     event Approve(address _owner, uint256 _txId);
+    event Revoke(address _owner, uint256 _txId);
+    event Executed(uint256 _txId);
 
     modifier txExists(uint _txId) {
         require(_txId < transactions.length, "tx does not exist");
@@ -62,6 +64,16 @@ contract MultiSig is Ownable {
 
     modifier notExecuted(uint _txId) {
         require(!transactions[_txId]._executed, "already executed");
+        _;
+    }
+
+    modifier wasApproved(uint _txId) {
+        require(_isApproved(_txId, msg.sender), "tx not yet approved");
+        _;
+    }
+
+    modifier enoughApprovals(uint _txId) {
+        require(approvalsCount[_txId] >= requiredApprovals, "not enough approvals");
         _;
     }
 
@@ -89,6 +101,17 @@ contract MultiSig is Ownable {
         emit Approve(msg.sender, _txId);
     }
 
+    function revoke(uint _txId) external
+    onlyOwners
+    txExists(_txId)
+    notExecuted(_txId)
+    wasApproved(_txId)
+    {
+        approved[_txId][msg.sender] = false;
+        approvalsCount[_txId] -= 1;
+        emit Revoke(msg.sender, _txId);
+    }
+
     function submit(address _to, uint256 _value, bytes calldata _data) external {
         Transaction memory newTx = Transaction({
             _to: _to,
@@ -100,6 +123,20 @@ contract MultiSig is Ownable {
         emit Submit(transactions.length - 1);
     }
 
+    function execute(uint _txId) external 
+    txExists(_txId)
+    notExecuted(_txId)
+    enoughApprovals(_txId)
+    {
+        Transaction storage myTx = transactions[_txId];
+
+        (bool success,) = myTx._to.call{value: myTx._value}(myTx._data);
+        require(success, "tx failed");
+
+        myTx._executed = true;
+        emit Executed(_txId);
+    }
+
     function deposit() public payable {
         emit Deposit(msg.sender, msg.value);
     }
@@ -108,4 +145,18 @@ contract MultiSig is Ownable {
         deposit();
     }
 
+}
+
+
+
+contract Receiver {
+    string public message;
+
+    function getBalance() public view returns(uint) {
+        return address(this).balance;
+    }
+
+    function getMoney(string memory _msg) external payable {
+        message = _msg;
+    }
 }
