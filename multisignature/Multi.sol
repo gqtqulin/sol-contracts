@@ -166,7 +166,7 @@ contract Receiver {
         return address(this).balance;
     }
 
-    function getMoney(string memory _msg) external payable {
+    function setMessage(string memory _msg) external payable {
         message = _msg;
     }
 }
