@@ -1,0 +1,134 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "getRoot",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "hashes",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "root",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "leaf",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32[]",
+						"name": "proof",
+						"type": "bytes32[]"
+					}
+				],
+				"name": "verify",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"verify(bytes32,bytes32,uint256,bytes32[])": {
+					"params": {
+						"index": "где находится хеш leaf",
+						"leaf": "хеш который нужно проверить (есть он или нет в дереве)",
+						"proof": "массив хешей, нужных для проверки",
+						"root": "корень (самый верхний хеш)"
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"getRoot()": {
+					"notice": "получить"
+				},
+				"verify(bytes32,bytes32,uint256,bytes32[])": {
+					"notice": "проверка что указанный хеш есть в дереве"
+				}
+			},
+			"notice": "Sherlock + John + Mary + Lestrade 6 Sherlock + John   Mary + Lestrade 4              5 Sherlock    John    Mary    Lestrade 0         1      2         3",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"merkletree/Tree.sol": "Tree"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"merkletree/Tree.sol": {
+			"keccak256": "0x3195319b0980d82b01ff45fc14da0c14930d13c4556d0f0f324a3020fbd14778",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://173f88f0267cc60dccbca98b4ea03f24c2d96dd92ac696b1f6a3841b5f62e808",
+				"dweb:/ipfs/QmeNYNt5CUqxKGdQPkbFyXqErk7oovPQu5JFNnfqduc4kn"
+			]
+		}
+	},
+	"version": 1
+}

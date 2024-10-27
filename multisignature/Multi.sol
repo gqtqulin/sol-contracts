@@ -25,19 +25,22 @@ contract Ownable {
         _;
     }
 
-    // добавление овнеров ?
+    // функция для добавление овнеров ?
 
 }
 
 contract MultiSig is Ownable {
-    uint public requiredApprovals;
+    uint public immutable requiredApprovals;
+
     struct Transaction {
         address _to;
         uint _value;
         bytes _data;
         bool _executed;
     }
+
     Transaction[] public transactions;
+
     // index => amount approval
     mapping(uint => uint) public approvalsCount;
     mapping(uint => mapping(address => bool)) public approved;
@@ -58,10 +61,6 @@ contract MultiSig is Ownable {
         _;
     }
 
-    function _isApproved(uint _txId, address _addr) private view returns(bool) {
-        return approved[_txId][_addr];
-    }
-
     modifier notExecuted(uint _txId) {
         require(!transactions[_txId]._executed, "already executed");
         _;
@@ -77,6 +76,10 @@ contract MultiSig is Ownable {
         _;
     }
 
+    function _isApproved(uint _txId, address _addr) private view returns(bool) {
+        return approved[_txId][_addr];
+    }
+
     constructor(address[] memory _owners, uint256 _requiredApprovals) Ownable(_owners) {
         require(
             _requiredApprovals > 0 && _requiredApprovals <= _owners.length,
@@ -85,12 +88,19 @@ contract MultiSig is Ownable {
         requiredApprovals = _requiredApprovals;
     }
 
-    // requiredApprovals чтобы добавллять ?
+    // requiredApprovals функция, чтобы добавллять ?
 
+    /**
+        @notice для тестирования
+     */
     function encode(string memory _func, string memory _arg) public pure returns(bytes memory) {
         return abi.encodeWithSignature(_func, _arg);
     }
 
+
+    /**
+        @notice сделать approve транкзации из под владельца
+     */
     function approve(uint _txId) external
     onlyOwners
     txExists(_txId)
